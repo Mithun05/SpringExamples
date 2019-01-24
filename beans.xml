@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:task="http://www.springframework.org/schema/task"
+ xmlns:util="http://www.springframework.org/schema/util"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context/ http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util/ http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+
+<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" /> 
+<task:annotation-driven />
+
+
+<bean id="a" class="com.practice.spring.examples.autowirewithxml.A">
+<property name = "id" value = "1" />
+<property name = "name" value = "AAA" />
+</bean>
+
+<bean id="b" class="com.practice.spring.examples.autowirewithxml.B">
+</bean>
+
+<bean id="chocolateTypes" class="com.practice.spring.examples.cron.ChocolateTypes">
+</bean>
+
+<bean id="chocolateProviderInfo" class="com.practice.spring.examples.domain.ChocolateProviderInfo">  
+<property name="providerName" value="COP">
+</property>
+<property name="providerNum" value="+11111">
+</property>  
+</bean>
+ 
+<bean id="chocolateInfo" class="com.practice.spring.examples.domain.ChocolateInfo">  
+<property name="chocolateName" value="EcliersChoco">
+</property>
+<property name="chocolateCompany" value="Ecliers">
+</property>  
+<property name="chocolatePrice" value="100">
+</property>
+</bean>
+
+<bean id="chocolateConsumerShopInfo" class="com.practice.spring.examples.domain.ChocolateConsumerShopInfo">  
+<property name="shopName" value="Nivas">
+</property>
+<property name="shopLocation" value="Claude Drive">
+</property>  
+<property name="shopNum" value="+12345678976">
+</property>
+</bean>
+
+<bean id = "chocolateConsumer" class = "com.practice.spring.examples.domain.ChocolateConsumer" autowire="byName">
+<constructor-arg value = "xyz" />
+<constructor-arg value = "+14302320000"/>
+<constructor-arg>
+<ref bean = "chocolateInfo"/>
+</constructor-arg>      
+</bean>  
+ 
+</beans>
